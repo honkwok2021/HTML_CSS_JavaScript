@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <link href="WebStyle.css" rel="stylesheet" />
+    
+    <title>Pricing</title>
+</head>
+<body>
+    <header>
+
+        <a href="Homepage.html"><img src="image/sorrento_by_the_sea_logo.jpg" alt="sorrentoLogo" id="companyLogo" class="center" /></a>
+
+    </header>
+
+    <div class="flexcontainer">
+        <nav>
+            <ul>
+                <li><a href="Homepage.html">Home Page</a></li>
+                <li><a href="AboutUs.html">AboutUs</a></li>
+                <li><a href="Surroundings.html">Surroundings</a></li>
+                <li><a href="Testimonials.html">Testimonials</a></li>
+                <li><a href="Pricing.html" class="indicator">Pricing</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <!--<li><a href="AboutUs">tesnewt</a></li>-->
+            </ul>
+
+        </nav>
+        <article>
+            <h2>Pricing</h2>
+            <div class="price-flexcontainer">
+                
+                
+                <section class="price" >
+                    <div>
+                        <h2>Winter</h2>
+                        The pricing is for 2 people<br />
+                        1st June- 31st August <br />
+                        $200 per night
+                    </div>
+                    <div>
+                        <h2>Summer</h2>
+                        The pricing is for 2 people<br />
+                        1st September - 18th December<br />
+                        $210 per night<br />
+                        1st February - 31st May 31st<br />
+                        $220 per night <br />
+                        19th December - 31stJanuary<br />
+                        $250 per night
+                    </div>
+                    <div>
+                        <h2>Terms and condition</h2>
+                        The apartment is strictly non-smoking.<br />
+                        Total amount is payable upon booking.<br />
+                        A full refund will be given prior to 30 days cancellation.<br />
+                        50% refund will be given after 30 days of cancellation.<br />
+                        In the event of a weekly or monthly booking the apartment
+                         will be serviced weekly unless by prior arrangement.<br />
+                        Weekly Price: $1250
+                        Monthly Price: $5400
+                    </div>
+                </section>
+                <section class="calculator">
+                    <h3>Price Calculator</h3>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            
+                           
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="myDropDown"></select>
+                                <button class="selectBtn" onclick="displayDate()">Add Date</button>
+                            </td>
+                            
+                            
+                        </tr>
+                       
+                        <tr>
+                            <td>
+                                <select id="myDropDown2">
+                                    <option disabled value="" selected >select to remove</option>
+                                </select>
+                                <button class="selectBtn" onclick="removeDate()">Remove Date</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p >Total Price: <span id="demo"></span></p>
+                                
+                            </td>
+                            
+                        </tr>
+
+                    </table>
+                    
+                </section>
+                
+            </div>
+            
+
+
+
+        </article>
+    </div>
+    <footer>
+        <a href="http://www.facebook.com"><img src="image/facebook_small.png" alt="facebook" class="footpic" /></a>
+        <a href="http://www.twitter.com"><img src="image/twitter_small.png" alt="twitter" class="footpic" /></a>
+        <a href="http://www.instagram.com"><img src="image/instagram_small.png" alt="instagram" class="footpic" /></a>
+        © 2020 Sorrento by the Sea All Right Reserved
+        <a href="http://www.youtube.com"><img src="image/youtube-variation_small.png" alt="youtube" class="footpic" /></a>
+        <a href="http://www.paypal.com"><img src="image/paypal_small.png" alt="paypal" class="footpic" /></a>
+    </footer>
+    <script src="PricingCalculator.js"></script>
+    <!--<script>
+        /**Declare varible for date, firstDay and lastDay */
+        //get the first day and last day of the current month
+        var date = new Date(); //get the current date and time
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 4, 0);
+
+        /** use while loop to generate dates in the dropdown list with the next 3 months dates */
+        while (firstDay <= lastDay) {
+            var option = document.createElement("option"); //<otpion></option>
+            var text = document.createTextNode(firstDay.toLocaleDateString());//XX/XX/XXXX
+            option.appendChild(text);//<otpion>XX/XX/XXXX</option>
+            document.getElementById("myDropDown").appendChild(option);
+            //<select id="myDropDown"><option>XX/XX/XXXX</option>..</select>
+            firstDay.setDate(firstDay.getDate() + 1);
+        }
+        /**delcare an array to store all selected dates*/
+        var selectedDates = new Array(); //empty array
+
+
+        /**
+         * define a function to display the selected dates and add the date into the list
+         * */
+        function displayDate() {
+
+
+            /**stroe the selected date in to array*/
+            var selected = document.getElementById("myDropDown").value;
+            selectedDates.push(new DatePrice(selected));
+
+            /**display the total price of all selected dates*/
+            var total = 0;
+            for (var i = 0; i < selectedDates.length; i++) {
+                total += selectedDates[i].p;
+            }
+            document.getElementById("demo0").innerHTML = "the total price is ";
+            document.getElementById("demo").innerHTML = total;
+
+            /**
+             *  sort out the order od date
+             * @param {date} a - date A
+             * @param {date}b - date B
+             * @returns -1, 1 or 0
+             * */
+            selectedDates.sort(function (a, b) {
+                let selectDateA = a.d;
+                let selectDateB = b.d;
+                if (selectDateA < selectDateB) {
+                    return -1;
+                }
+                if (selectDateA > selectDateB) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            /**add the slected date to the second drop down*/
+            document.getElementById("myDropDown2").innerHTML = "" //<select id="myDropDown2"</select> clear selection
+            for (var i = 0; i < selectedDates.length; i++) {
+                var option = document.createElement("option"); //<otpion></option>
+                var text = document.createTextNode(selectedDates[i].d.toLocaleDateString());//XX/XX/XXXX
+                option.appendChild(text);//<otpion>XX/XX/XXXX</option>
+                document.getElementById("myDropDown2").appendChild(option);
+            }
+        }
+        /**
+         * This is to find the sorted date and remove it with binary search*/
+        function removeDate() {
+
+            /**
+             * To do a binary search of the date property
+             * @param {string} value
+             * @param {number} list
+             * @returns {number} position of date property
+             */
+            function binarySearch(value, list) {
+
+                var match = value.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+                let valueDate = new Date(parseInt(match[3]), parseInt(match[1]) - 1, parseInt(match[2]));
+
+                let first = 0;    //left endpoint
+                let last = list.length - 1;   //right endpoint
+                let position = -1;
+                let found = false;
+                let middle;
+
+                while (found === false && first <= last) {
+                    middle = Math.floor((first + last) / 2);
+                    if (list[middle].d.valueOf() == valueDate.valueOf()) {
+                        found = true;
+                        position = middle;
+                    } else if (list[middle].d.valueOf() > valueDate.valueOf()) {  //if in lower half
+                        last = middle - 1;
+                    } else {  //in in upper half
+                        first = middle + 1;
+                    }
+                }
+                return position;
+            }
+
+            var selectedRemove = document.getElementById("myDropDown2").value;
+            let binaryPosition = binarySearch(selectedRemove, selectedDates);
+
+            /**remove the date with For loop */
+            for (var i = 0; i < selectedDates.length; i++) {
+
+                if (selectedRemove == selectedDates[i].d.toLocaleDateString()) {
+                    //remove from second dropdown
+                    //var indexDropDown = document.getElementById("myDropDown2").selectedIndex;
+                    document.getElementById("myDropDown2").remove(binaryPosition);
+                    //update total
+                    var total = document.getElementById("demo").innerHTML;
+                    total -= selectedDates[i].p;
+                    //remove from array
+                    selectedDates.splice(i, 1);
+                }
+            }
+            //update the total on demo
+            document.getElementById("demo").innerHTML = total;
+
+        }
+
+
+
+
+        /**
+         * define a class to store the bookingdate and booking price
+         */
+        class DatePrice {
+            /**
+             * constructor to store date and get price
+             * @constructor
+             * @param {Date} d - a date added from the list
+             */
+            constructor(d) {//d - string booking date
+                this.d = new Date(d);//this.d (booking date) - Date obj property
+                this.p = this.getPrice(); // this.p (booking price) - a number property
+            }
+            /**
+             * Get the value of price with selected date using if and else if statement
+             * @param {Date} d - selected date
+             * @returns {number} the price value
+             */
+            getPrice(d) {
+
+
+                if (this.d.getMonth() === 0) {
+                    return 250;
+                }
+                else if (this.d.getMonth() >= 1 && this.d.getMonth() <= 4) {
+                    return 220;
+                }
+                else if (this.d.getMonth() >= 5 && this.d.getMonth() <= 7) {
+                    return 200;
+                }
+                else if (this.d.getMonth() >= 8 && this.d.getMonth() <= 10) {
+                    return 210
+                }
+                else if (this.d.getMonth() === 11 && this.d.getDate() <= 18) {
+                    return 210;
+                }
+                else if (this.d.getMonth() === 11 && this.d.getDate() > 18) {
+                    return 250;
+                }
+
+
+            }
+
+        }
+
+    </script>-->
+</body>
+</html>

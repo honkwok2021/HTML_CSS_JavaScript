@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <link href="WebStyle.css" rel="stylesheet" />
+    <script src="ContactsValidation.js"></script>
+    <title>Contact</title>
+</head>
+<body>
+    <header>
+        <a href="Homepage.html"><img src="image/sorrento_by_the_sea_logo.jpg" alt="sorrentoLogo" id="companyLogo" class="center" /></a>
+    </header>
+    <div class="flexcontainer">
+        <nav>
+            <ul>
+                <li><a href="Homepage.html">Home Page</a></li>
+                <li><a href="AboutUs.html">AboutUs</a></li>
+                <li><a href="Surroundings.html">Surroundings</a></li>
+                <li><a href="Testimonials.html">Testimonials</a></li>
+                <li><a href="Pricing.html">Pricing</a></li>
+                <li><a href="Contact.html" class="indicator">Contact</a></li>
+            </ul>
+
+        </nav>
+        <article>
+            <h2>Contact & Location</h2>
+            <div class="contactform">
+                <form name="Cform" action="#" method="post" onsubmit="return validateAll(this)">
+                    <label id="lblName" for="name">Name</label><br />
+                    <input type="text" id="name" class="valid" onblur="return validateName(this,txtName_Help)" name="anyname" placeholder="Your name" /><span id="txtName_Help"></span><br />
+
+                    <label for="phone">Phone</label><br />
+                    <input type="text" id="phone" class="valid" onblur="return validatePhoneNo(this,phone_Help)" name="phoneno" placeholder="phone no start with 61" /><span id="phone_Help"></span><br />
+
+                    <label for="email">Email</label><br />
+                    <input type="email" id="email" class="valid" onblur="return validateEmail(this,Email_Help)" name="emailaddress" placeholder="Your email address" /><span id="Email_Help"></span><br />
+
+                    <label for="message">Message</label><br />
+                    <textarea id="message" type="text" class="valid" onblur="return validateNonEmpty(this,txtmessage_Help)" name="messagesss" placeholder="Your message"></textarea><span id="txtmessage_Help"></span><br />
+                    <p id="formErrorMessage"></p>
+                    <input name="submit1" type="submit" value="submit" /><input name="Reset1" type="reset" value="reset" /><br />
+                </form>
+            </div>
+            <div id="mapblock">
+                <img src="image/LocationMap.png" alt="map" id="map" /><br />
+                <p style="color: white;">42 Holyrood Avenue Sorrento VIC 3943</p>
+                <p id="direction">
+                   <br />Drive: From Melbourne, take the Monash Freeway,<br />
+                    connect onto the Eastlink heading for Portsea,<br />
+                    then onto the Peninsula link to Sorrento.<br />
+                    Another option is the scenic drive around the beach. <br /><br />
+                    Ferry: take the Queenscliff/Sorrento Ferry,<br />
+                    only a 2 minute drive from the Ferry Depot. <br />
+                    Or for foot passenger we are happy to meet you<br />
+                    at the Sorrento ferry at.Just phone us on <br />
+                    0435 123 456 as you arrive.<br />
+                </p>
+            </div>
+            
+        </article>
+    </div>
+
+    <footer>
+
+        <a href="http://www.facebook.com"><img src="image/facebook_small.png" alt="facebook" class="footpic" /></a>
+        <a href="http://www.twitter.com"><img src="image/twitter_small.png" alt="twitter" class="footpic" /></a>
+        <a href="http://www.instagram.com"><img src="image/instagram_small.png" alt="instagram" class="footpic" /></a>
+        © 2020 Sorrento by the Sea All Right Reserved
+        <a href="http://www.youtube.com"><img src="image/youtube-variation_small.png" alt="youtube" class="footpic" /></a>
+        <a href="http://www.paypal.com"><img src="image/paypal_small.png" alt="paypal" class="footpic" /></a>
+
+    </footer>
+</body>
+</html>
